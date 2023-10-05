@@ -1,0 +1,101 @@
+from itertools import count
+
+
+def arithmetic_arranger(list1):
+    arithmetic_arranger1 = list1
+    if len(list1) > 5:
+        print('Error: Too many problems.')
+        exit()
+
+    i = 0
+    for problem in arithmetic_arranger1:
+
+        split_arithmetic_arranger = arithmetic_arranger1[i].split()
+
+        if split_arithmetic_arranger[1] == '+':
+
+            sum_ar = int(split_arithmetic_arranger[0]) + int(split_arithmetic_arranger[2])
+
+            count_1 = int(len(split_arithmetic_arranger[0]))
+            count_3 = int(len(split_arithmetic_arranger[2]))
+
+            if count_1 > 4 or count_3 > 4:
+                print('Error: Numbers cannot be more than four digits.')
+                exit()
+
+            elif count_1 == count_3 or count_1 < count_3:
+                second_row = 2 + count_3
+
+                first_row = second_row - count_1
+
+                print((' ' * first_row) + split_arithmetic_arranger[0],)
+                print(split_arithmetic_arranger[1] + ' ' + split_arithmetic_arranger[2])
+                print('_' * second_row)
+
+                # for spacing of the answer
+                third_row = second_row - len(str(sum_ar))
+                print(' ' * third_row + str(sum_ar))
+
+                i += 1
+
+            else:
+                first_row = 2 + count_1
+                second_row = first_row - (count_3 + 1)
+
+                print((' ' * 2 + split_arithmetic_arranger[0]))
+                print(split_arithmetic_arranger[1] + ' ' * second_row + split_arithmetic_arranger[2])
+                print('_' * first_row)
+
+                # for spacing of the answer
+                third_row = first_row - len(str(sum_ar))
+                print(' ' * third_row + str(sum_ar))
+
+                i += 1
+
+        if split_arithmetic_arranger[1] == '-':
+            difference_ar = int(split_arithmetic_arranger[0]) - int(split_arithmetic_arranger[2])
+
+            count_1 = int(len(split_arithmetic_arranger[0]))
+            count_3 = int(len(split_arithmetic_arranger[2]))
+
+            if count_1 > 4 or count_3 > 4:
+                print('Error: Numbers cannot be more than four digits.')
+                exit()
+
+            elif count_1 == count_3 or count_1 < count_3:
+                second_row = 2 + count_3
+
+                first_row = second_row - count_1
+
+                print((' ' * first_row) + split_arithmetic_arranger[0])
+                print(split_arithmetic_arranger[1] + ' ' + split_arithmetic_arranger[2])
+                print('_' * second_row)
+
+                # for spacing of the answer
+                third_row = second_row - len(str(difference_ar))
+                print(' ' * third_row + str(difference_ar))
+
+                i += 1
+
+            else:
+                first_row = 2 + count_1
+                second_row = first_row - (count_3 + 1)
+
+                print((' ' * 2 + split_arithmetic_arranger[0]))
+                print(split_arithmetic_arranger[1] + ' ' * second_row + split_arithmetic_arranger[2])
+                print('_' * first_row)
+
+                # for spacing of the answer
+                third_row = first_row - len(str(difference_ar))
+                print(' ' * third_row + str(difference_ar))
+
+                i += 1
+
+        if split_arithmetic_arranger[1] != '-' and split_arithmetic_arranger[1] != '+':
+            print('Error: Operator must be "+" or "-" .')
+
+            i += 1
+
+
+arithmetic_arranger(["1111 + 1911", "123 + 1", "234 * 1232", "234 - 1232", "234 - 1232"])
+
